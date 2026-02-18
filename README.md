@@ -1,6 +1,19 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installer dépendances
+
+```bash
+npm install
+```
+
+## Démarrer le projet
+
+```bash
+npm start
+```
+
+L'application sera accessible à : http://localhost:3000/QuizReactInformatique
 
 ## Available Scripts
 

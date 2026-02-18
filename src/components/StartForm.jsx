@@ -19,9 +19,9 @@ const StartForm = ({ onStart }) => {
     <form className="start-form" onSubmit={handleSubmit}>
               <header className="app-header">
         <h1>
-         Quiz <br/> Techniciens de 3<sup>ème</sup> grade <br/> informatique
+         Quiz <br/> Devellope<sup>ment</sup> generale <br/> informatique
         </h1>
-        <p className="subtitle">2025 / Maroc</p>
+        <p className="subtitle">2026 / Maroc</p>
       </header>
       <label>Entrez votre nom :</label>
       <input

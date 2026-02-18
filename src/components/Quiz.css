@@ -1,83 +1,245 @@
+/* Quiz Card Container */
 .quiz {
-  width: auto;
-  background: #f0f9ff;
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
-  animation: fadeIn 0.7s ease forwards;
-  user-select: none;
+  width: 100%;
+  max-width: 920px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 26px;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@media (max-width: 700px) {
+  .quiz {
+    padding: 18px;
+    padding-bottom: 90px; /* Espace pour le bouton sticky */
+  }
+}
+
+/* Top Bar avec KPIs */
+.quiz-top {
   display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
+.kpi {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Barre de progression */
+.progress-bar {
+  height: 10px;
+  background: #eef2ff;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #7c3aed);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Question */
 .question {
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #1e293b;
-  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 10px 0 24px;
+  color: var(--text);
 }
 
+/* Options Grid */
 .options {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
+@media (max-width: 700px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Option Button */
 .option {
-  background-color: #e0f2fe;
-  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
   border-radius: 14px;
-  border: 2px solid transparent;
-  font-weight: 600;
+  border: 2px solid var(--border);
+  background: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  user-select: none;
+  transition: transform 0.08s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: left;
 }
 
-.option:hover {
-  background-color: #bae6fd;
-  border-color: #60a5fa;
-  box-shadow: 0 5px 10px rgba(37, 99, 235, 0.4);
+.option:hover:not(.correct):not(.wrong) {
+  border-color: #c7d2fe;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.1);
+  transform: translateY(-2px);
 }
 
+/* Radio Indicator */
+.option-dot {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Selected State */
 .option.selected {
-  background-color: #2563eb;
-  color: white;
-  border-color: #1d4ed8;
-  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.7);
+  border-color: var(--primary);
+  background: #eef2ff;
 }
 
-.next-btn {
-  align-self: center;
-  background-color: #2563eb;
-  color: white;
-  padding: 0.85rem 2.5rem;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
-  border: none;
-  transition: background-color 0.3s ease;
-  user-select: none;
+.option.selected .option-dot {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 5px var(--primary);
 }
 
-.next-btn:disabled {
-  background-color: #a5b4fc;
-  cursor: not-allowed;
+/* Correct State */
+.option.correct {
+  border-color: var(--success);
+  background: #ecfdf5;
+  cursor: default;
+}
+
+.option.correct .option-dot {
+  border-color: var(--success);
+  background: var(--success);
+}
+
+.option.correct .option-dot::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Wrong State */
+.option.wrong {
+  border-color: var(--error);
+  background: #fef2f2;
+  cursor: default;
+}
+
+.option.wrong .option-dot {
+  border-color: var(--error);
+  background: var(--error);
+}
+
+.option.wrong .option-dot::after {
+  content: "✕";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Disabled after validation */
+.option.disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.option.disabled:hover {
+  transform: none;
   box-shadow: none;
 }
 
-.next-btn:hover:not(:disabled) {
-  background-color: #1e40af;
+/* Actions Container */
+.quiz-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
 }
 
+@media (max-width: 700px) {
+  .quiz-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--card);
+    padding: 16px;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
+    z-index: 100;
+  }
+}
+
+/* Button */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  color: white;
+  background: var(--primary);
+  transition: transform 0.08s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--primary-2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .btn {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+/* Hint Text */
+.hint {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .hint {
+    margin-bottom: 20px;
+  }
+}
+
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -87,32 +249,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-.option {
-  cursor: pointer;
-  padding: 0.7rem 1rem;
-  margin: 0.4rem 0;
-  border-radius: 8px;
-  border: 2px solid #2563eb;
-  background-color: white;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
-}
-
-.option.selected {
-  background-color: #bfdbfe;
-}
-
-.option.correct {
-  background-color: #34d399; /* vert clair */
-  border-color: #059669;
-  color: white;
-  font-weight: bold;
-}
-
-.option.wrong {
-  background-color: #f87171; /* rouge clair */
-  border-color: #b91c1c;
-  color: white;
-  font-weight: bold;
 }

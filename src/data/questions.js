@@ -759,6 +759,86 @@ const questions = [
     ],
     answer: "Dynamic Host Configuration Protocol"
   },
+   {
+    question: "Quel est le rôle d’un serveur proxy ?",
+    options: [
+      "Intermédiaire entre client et serveur",
+      "Serveur de fichiers",
+      "Routeur réseau",
+      "Pare-feu"
+    ],
+    answer: "Intermédiaire entre client et serveur"
+  },
+  {
+    question: "Que signifie HTTP ?",
+    options: [
+      "HyperText Transfer Protocol",
+      "High Transfer Text Protocol",
+      "Hyper Transfer Text Process",
+      "Home Tool Transfer Protocol"
+    ],
+    answer: "HyperText Transfer Protocol"
+  },
+  {
+    question: "Quel composant est considéré comme le cerveau de l’ordinateur ?",
+    options: [
+      "CPU",
+      "Disque dur",
+      "Carte graphique",
+      "RAM"
+    ],
+    answer: "CPU"
+  },
+  {
+    question: "Quel langage est principalement utilisé pour styliser les pages web ?",
+    options: [
+      "CSS",
+      "HTML",
+      "PHP",
+      "Python"
+    ],
+    answer: "CSS"
+  },
+  {
+    question: "Quelle est l’extension d’un fichier JavaScript ?",
+    options: [
+      ".js",
+      ".java",
+      ".jsx",
+      ".json"
+    ],
+    answer: ".js"
+  },
+  {
+    question: "Quel est le rôle principal d’un pare-feu (firewall) ?",
+    options: [
+      "Protéger le réseau contre les accès non autorisés",
+      "Accélérer la connexion internet",
+      "Stocker les données",
+      "Compiler les programmes"
+    ],
+    answer: "Protéger le réseau contre les accès non autorisés"
+  },
+  {
+    question: "Quel protocole est utilisé pour envoyer des emails ?",
+    options: [
+      "SMTP",
+      "FTP",
+      "SSH",
+      "TCP"
+    ],
+    answer: "SMTP"
+  },
+  {
+    question: "Quel type de base de données utilise des tables relationnelles ?",
+    options: [
+      "Base de données relationnelle",
+      "Base de données NoSQL",
+      "Base de données orientée objet",
+      "Base de données hiérarchique"
+    ],
+    answer: "Base de données relationnelle"
+  },
   {
     question: "Quel est le rôle d’un serveur proxy ?",
     options: [
